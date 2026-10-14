@@ -1,1 +1,313 @@
-﻿{"metadata":{"kernel_spec":{"name":"SQL","language":"sql","display_name":"SQL"},"language_info":{"name":"sql","version":""}},"nbformat":4,"nbformat_minor":2,"cells":[{"cell_type":"markdown","source":["# [QLSV]"],"metadata":{"urn":"Server[@Name='LAPTOP-FDFUAN8L\\SQLEXPRESS']/Database[@Name='QLSV']","object_type":"Database"}},{"outputs":[],"execution_count":0,"cell_type":"code","source":["USE [master]\r\n","GO\r\n"],"metadata":{"urn":"Server[@Name='LAPTOP-FDFUAN8L\\SQLEXPRESS']/Database[@Name='QLSV']","object_type":"Database"}},{"outputs":[],"execution_count":0,"cell_type":"code","source":["/****** Object:  Database [QLSV]    Script Date: 10/14/2026 9:41:42 AM ******/\r\nCREATE DATABASE [QLSV]\r\n CONTAINMENT = NONE\r\n ON  PRIMARY \r\n( NAME = N'QLSV', FILENAME = N'C:\\Program Files\\Microsoft SQL Server\\MSSQL16.SQLEXPRESS\\MSSQL\\DATA\\QLSV.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )\r\n LOG ON \r\n( NAME = N'QLSV_log', FILENAME = N'C:\\Program Files\\Microsoft SQL Server\\MSSQL16.SQLEXPRESS\\MSSQL\\DATA\\QLSV_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )\r\n WITH CATALOG_COLLATION = DATABASE_DEFAULT, LEDGER = OFF\r\n","GO\r\n","ALTER DATABASE [QLSV] SET COMPATIBILITY_LEVEL = 160\r\n","GO\r\n","IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))\r\nbegin\r\nEXEC [QLSV].[dbo].[sp_fulltext_database] @action = 'enable'\r\nend\r\n","GO\r\n","ALTER DATABASE [QLSV] SET ANSI_NULL_DEFAULT OFF \r\n","GO\r\n","ALTER DATABASE [QLSV] SET ANSI_NULLS OFF \r\n","GO\r\n","ALTER DATABASE [QLSV] SET ANSI_PADDING OFF \r\n","GO\r\n","ALTER DATABASE [QLSV] SET ANSI_WARNINGS OFF \r\n","GO\r\n","ALTER DATABASE [QLSV] SET ARITHABORT OFF \r\n","GO\r\n","ALTER DATABASE [QLSV] SET AUTO_CLOSE ON \r\n","GO\r\n","ALTER DATABASE [QLSV] SET AUTO_SHRINK OFF \r\n","GO\r\n","ALTER DATABASE [QLSV] SET AUTO_UPDATE_STATISTICS ON \r\n","GO\r\n","ALTER DATABASE [QLSV] SET CURSOR_CLOSE_ON_COMMIT OFF \r\n","GO\r\n","ALTER DATABASE [QLSV] SET CURSOR_DEFAULT  GLOBAL \r\n","GO\r\n","ALTER DATABASE [QLSV] SET CONCAT_NULL_YIELDS_NULL OFF \r\n","GO\r\n","ALTER DATABASE [QLSV] SET NUMERIC_ROUNDABORT OFF \r\n","GO\r\n","ALTER DATABASE [QLSV] SET QUOTED_IDENTIFIER OFF \r\n","GO\r\n","ALTER DATABASE [QLSV] SET RECURSIVE_TRIGGERS OFF \r\n","GO\r\n","ALTER DATABASE [QLSV] SET  ENABLE_BROKER \r\n","GO\r\n","ALTER DATABASE [QLSV] SET AUTO_UPDATE_STATISTICS_ASYNC OFF \r\n","GO\r\n","ALTER DATABASE [QLSV] SET DATE_CORRELATION_OPTIMIZATION OFF \r\n","GO\r\n","ALTER DATABASE [QLSV] SET TRUSTWORTHY OFF \r\n","GO\r\n","ALTER DATABASE [QLSV] SET ALLOW_SNAPSHOT_ISOLATION OFF \r\n","GO\r\n","ALTER DATABASE [QLSV] SET PARAMETERIZATION SIMPLE \r\n","GO\r\n","ALTER DATABASE [QLSV] SET READ_COMMITTED_SNAPSHOT OFF \r\n","GO\r\n","ALTER DATABASE [QLSV] SET HONOR_BROKER_PRIORITY OFF \r\n","GO\r\n","ALTER DATABASE [QLSV] SET RECOVERY SIMPLE \r\n","GO\r\n","ALTER DATABASE [QLSV] SET  MULTI_USER \r\n","GO\r\n","ALTER DATABASE [QLSV] SET PAGE_VERIFY CHECKSUM  \r\n","GO\r\n","ALTER DATABASE [QLSV] SET DB_CHAINING OFF \r\n","GO\r\n","ALTER DATABASE [QLSV] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) \r\n","GO\r\n","ALTER DATABASE [QLSV] SET TARGET_RECOVERY_TIME = 60 SECONDS \r\n","GO\r\n","ALTER DATABASE [QLSV] SET DELAYED_DURABILITY = DISABLED \r\n","GO\r\n","ALTER DATABASE [QLSV] SET ACCELERATED_DATABASE_RECOVERY = OFF  \r\n","GO\r\n","ALTER DATABASE [QLSV] SET QUERY_STORE = ON\r\n","GO\r\n","ALTER DATABASE [QLSV] SET QUERY_STORE (OPERATION_MODE = READ_WRITE, CLEANUP_POLICY = (STALE_QUERY_THRESHOLD_DAYS = 30), DATA_FLUSH_INTERVAL_SECONDS = 900, INTERVAL_LENGTH_MINUTES = 60, MAX_STORAGE_SIZE_MB = 1000, QUERY_CAPTURE_MODE = AUTO, SIZE_BASED_CLEANUP_MODE = AUTO, MAX_PLANS_PER_QUERY = 200, WAIT_STATS_CAPTURE_MODE = ON)\r\n","GO\r\n"],"metadata":{"urn":"Server[@Name='LAPTOP-FDFUAN8L\\SQLEXPRESS']/Database[@Name='QLSV']","object_type":"Database"}},{"cell_type":"markdown","source":["# [dbo].[DangKyMonHoc]"],"metadata":{"urn":"Server[@Name='LAPTOP-FDFUAN8L\\SQLEXPRESS']/Database[@Name='QLSV']/Table[@Name='DangKyMonHoc' and @Schema='dbo']","object_type":"Table"}},{"outputs":[],"execution_count":0,"cell_type":"code","source":["USE [QLSV]\r\n","GO\r\n"],"metadata":{"urn":"Server[@Name='LAPTOP-FDFUAN8L\\SQLEXPRESS']/Database[@Name='QLSV']/Table[@Name='DangKyMonHoc' and @Schema='dbo']","object_type":"Table"}},{"outputs":[],"execution_count":0,"cell_type":"code","source":["/****** Object:  Table [dbo].[DangKyMonHoc]    Script Date: 10/14/2026 9:41:42 AM ******/\r\nSET ANSI_NULLS ON\r\n","GO\r\n","SET QUOTED_IDENTIFIER ON\r\n","GO\r\n","CREATE TABLE [dbo].[DangKyMonHoc](\r\n\t[MSSV] [varchar](15) NOT NULL,\r\n\t[MaMonHoc] [varchar](10) NOT NULL,\r\n\t[NgayDangKy] [datetime] NOT NULL,\r\n CONSTRAINT [PK_DangKyMonHoc] PRIMARY KEY CLUSTERED \r\n(\r\n\t[MSSV] ASC,\r\n\t[MaMonHoc] ASC\r\n)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]\r\n) ON [PRIMARY]\r\nGO\r\n"],"metadata":{"urn":"Server[@Name='LAPTOP-FDFUAN8L\\SQLEXPRESS']/Database[@Name='QLSV']/Table[@Name='DangKyMonHoc' and @Schema='dbo']","object_type":"Table"}},{"cell_type":"markdown","source":["# [dbo].[HocKy]"],"metadata":{"urn":"Server[@Name='LAPTOP-FDFUAN8L\\SQLEXPRESS']/Database[@Name='QLSV']/Table[@Name='HocKy' and @Schema='dbo']","object_type":"Table"}},{"outputs":[],"execution_count":0,"cell_type":"code","source":["/****** Object:  Table [dbo].[HocKy]    Script Date: 10/14/2026 9:41:42 AM ******/\r\nSET ANSI_NULLS ON\r\n","GO\r\n","SET QUOTED_IDENTIFIER ON\r\n","GO\r\n","CREATE TABLE [dbo].[HocKy](\r\n\t[MaHocKy] [varchar](10) NOT NULL,\r\n\t[TenHocKy] [nvarchar](50) NOT NULL,\r\n\t[NamHoc] [varchar](9) NOT NULL,\r\nPRIMARY KEY CLUSTERED \r\n(\r\n\t[MaHocKy] ASC\r\n)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]\r\n) ON [PRIMARY]\r\nGO\r\n"],"metadata":{"urn":"Server[@Name='LAPTOP-FDFUAN8L\\SQLEXPRESS']/Database[@Name='QLSV']/Table[@Name='HocKy' and @Schema='dbo']","object_type":"Table"}},{"cell_type":"markdown","source":["# [dbo].[Khoa]"],"metadata":{"urn":"Server[@Name='LAPTOP-FDFUAN8L\\SQLEXPRESS']/Database[@Name='QLSV']/Table[@Name='Khoa' and @Schema='dbo']","object_type":"Table"}},{"outputs":[],"execution_count":0,"cell_type":"code","source":["/****** Object:  Table [dbo].[Khoa]    Script Date: 10/14/2026 9:41:42 AM ******/\r\nSET ANSI_NULLS ON\r\n","GO\r\n","SET QUOTED_IDENTIFIER ON\r\n","GO\r\n","CREATE TABLE [dbo].[Khoa](\r\n\t[MaKhoa] [varchar](10) NOT NULL,\r\n\t[TenKhoa] [nvarchar](100) NOT NULL,\r\nPRIMARY KEY CLUSTERED \r\n(\r\n\t[MaKhoa] ASC\r\n)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]\r\n) ON [PRIMARY]\r\nGO\r\n"],"metadata":{"urn":"Server[@Name='LAPTOP-FDFUAN8L\\SQLEXPRESS']/Database[@Name='QLSV']/Table[@Name='Khoa' and @Schema='dbo']","object_type":"Table"}},{"cell_type":"markdown","source":["# [dbo].[MonHoc]"],"metadata":{"urn":"Server[@Name='LAPTOP-FDFUAN8L\\SQLEXPRESS']/Database[@Name='QLSV']/Table[@Name='MonHoc' and @Schema='dbo']","object_type":"Table"}},{"outputs":[],"execution_count":0,"cell_type":"code","source":["/****** Object:  Table [dbo].[MonHoc]    Script Date: 10/14/2026 9:41:42 AM ******/\r\nSET ANSI_NULLS ON\r\n","GO\r\n","SET QUOTED_IDENTIFIER ON\r\n","GO\r\n","CREATE TABLE [dbo].[MonHoc](\r\n\t[MaMonHoc] [varchar](10) NOT NULL,\r\n\t[TenMonHoc] [nvarchar](100) NOT NULL,\r\n\t[SoTinChi] [int] NOT NULL,\r\n\t[MaHocKy] [varchar](10) NULL,\r\n CONSTRAINT [PK_MonHoc] PRIMARY KEY CLUSTERED \r\n(\r\n\t[MaMonHoc] ASC\r\n)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]\r\n) ON [PRIMARY]\r\nGO\r\n"],"metadata":{"urn":"Server[@Name='LAPTOP-FDFUAN8L\\SQLEXPRESS']/Database[@Name='QLSV']/Table[@Name='MonHoc' and @Schema='dbo']","object_type":"Table"}},{"cell_type":"markdown","source":["# [dbo].[SinhVien]"],"metadata":{"urn":"Server[@Name='LAPTOP-FDFUAN8L\\SQLEXPRESS']/Database[@Name='QLSV']/Table[@Name='SinhVien' and @Schema='dbo']","object_type":"Table"}},{"outputs":[],"execution_count":0,"cell_type":"code","source":["/****** Object:  Table [dbo].[SinhVien]    Script Date: 10/14/2026 9:41:42 AM ******/\r\nSET ANSI_NULLS ON\r\n","GO\r\n","SET QUOTED_IDENTIFIER ON\r\n","GO\r\n","CREATE TABLE [dbo].[SinhVien](\r\n\t[MSSV] [varchar](15) NOT NULL,\r\n\t[HoTen] [nvarchar](100) NOT NULL,\r\n\t[MaKhoa] [varchar](10) NOT NULL,\r\nPRIMARY KEY CLUSTERED \r\n(\r\n\t[MSSV] ASC\r\n)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]\r\n) ON [PRIMARY]\r\nGO\r\n"],"metadata":{"urn":"Server[@Name='LAPTOP-FDFUAN8L\\SQLEXPRESS']/Database[@Name='QLSV']/Table[@Name='SinhVien' and @Schema='dbo']","object_type":"Table"}},{"cell_type":"markdown","source":["# [dbo].[DangKyMonHoc]"],"metadata":{"urn":"Server[@Name='LAPTOP-FDFUAN8L\\SQLEXPRESS']/Database[@Name='QLSV']/Table[@Name='DangKyMonHoc' and @Schema='dbo']","object_type":"Table"}},{"outputs":[],"execution_count":0,"cell_type":"code","source":["INSERT [dbo].[DangKyMonHoc] ([MSSV], [MaMonHoc], [NgayDangKy]) VALUES (N'SV001', N'MH001', CAST(N'2026-10-13T14:43:27.020' AS DateTime))\r\n","INSERT [dbo].[DangKyMonHoc] ([MSSV], [MaMonHoc], [NgayDangKy]) VALUES (N'SV001', N'MH002', CAST(N'2026-10-14T08:37:39.563' AS DateTime))\r\n","INSERT [dbo].[DangKyMonHoc] ([MSSV], [MaMonHoc], [NgayDangKy]) VALUES (N'SV001', N'MH005', CAST(N'2026-10-13T14:43:27.020' AS DateTime))\r\n","INSERT [dbo].[DangKyMonHoc] ([MSSV], [MaMonHoc], [NgayDangKy]) VALUES (N'SV001', N'MH006', CAST(N'2026-10-13T16:18:41.663' AS DateTime))\r\n","INSERT [dbo].[DangKyMonHoc] ([MSSV], [MaMonHoc], [NgayDangKy]) VALUES (N'SV002', N'MH002', CAST(N'2026-10-14T08:52:19.993' AS DateTime))\r\n","INSERT [dbo].[DangKyMonHoc] ([MSSV], [MaMonHoc], [NgayDangKy]) VALUES (N'SV002', N'MH008', CAST(N'2026-10-13T14:43:27.020' AS DateTime))\r\n","INSERT [dbo].[DangKyMonHoc] ([MSSV], [MaMonHoc], [NgayDangKy]) VALUES (N'SV003', N'MH001', CAST(N'2026-10-13T14:43:27.020' AS DateTime))\r\n","INSERT [dbo].[DangKyMonHoc] ([MSSV], [MaMonHoc], [NgayDangKy]) VALUES (N'SV003', N'MH003', CAST(N'2026-10-13T14:43:27.020' AS DateTime))\r\n","INSERT [dbo].[DangKyMonHoc] ([MSSV], [MaMonHoc], [NgayDangKy]) VALUES (N'SV004', N'MH001', CAST(N'2026-10-13T14:43:27.020' AS DateTime))\r\n","INSERT [dbo].[DangKyMonHoc] ([MSSV], [MaMonHoc], [NgayDangKy]) VALUES (N'SV004', N'MH007', CAST(N'2026-10-13T14:43:27.020' AS DateTime))\r\n","INSERT [dbo].[DangKyMonHoc] ([MSSV], [MaMonHoc], [NgayDangKy]) VALUES (N'SV005', N'MH003', CAST(N'2026-10-13T14:43:27.020' AS DateTime))\r\n","INSERT [dbo].[DangKyMonHoc] ([MSSV], [MaMonHoc], [NgayDangKy]) VALUES (N'SV005', N'MH004', CAST(N'2026-10-13T14:43:27.020' AS DateTime))\r\n","INSERT [dbo].[DangKyMonHoc] ([MSSV], [MaMonHoc], [NgayDangKy]) VALUES (N'SV006', N'MH006', CAST(N'2026-10-13T14:43:27.020' AS DateTime))\r\n","INSERT [dbo].[DangKyMonHoc] ([MSSV], [MaMonHoc], [NgayDangKy]) VALUES (N'SV006', N'MH008', CAST(N'2026-10-13T14:43:27.020' AS DateTime))\r\n","INSERT [dbo].[DangKyMonHoc] ([MSSV], [MaMonHoc], [NgayDangKy]) VALUES (N'SV007', N'MH002', CAST(N'2026-10-13T14:43:27.020' AS DateTime))\r\n","INSERT [dbo].[DangKyMonHoc] ([MSSV], [MaMonHoc], [NgayDangKy]) VALUES (N'SV007', N'MH005', CAST(N'2026-10-13T14:43:27.020' AS DateTime))\r\n","INSERT [dbo].[DangKyMonHoc] ([MSSV], [MaMonHoc], [NgayDangKy]) VALUES (N'SV008', N'MH004', CAST(N'2026-10-13T14:43:27.020' AS DateTime))\r\n","INSERT [dbo].[DangKyMonHoc] ([MSSV], [MaMonHoc], [NgayDangKy]) VALUES (N'SV009', N'MH001', CAST(N'2026-10-13T14:43:27.020' AS DateTime))\r\n","INSERT [dbo].[DangKyMonHoc] ([MSSV], [MaMonHoc], [NgayDangKy]) VALUES (N'SV009', N'MH007', CAST(N'2026-10-13T14:43:27.020' AS DateTime))\r\n","INSERT [dbo].[DangKyMonHoc] ([MSSV], [MaMonHoc], [NgayDangKy]) VALUES (N'SV010', N'MH006', CAST(N'2026-10-13T14:43:27.020' AS DateTime))\r\n","INSERT [dbo].[DangKyMonHoc] ([MSSV], [MaMonHoc], [NgayDangKy]) VALUES (N'SV011', N'MH003', CAST(N'2026-10-13T14:43:27.020' AS DateTime))\r\n","INSERT [dbo].[DangKyMonHoc] ([MSSV], [MaMonHoc], [NgayDangKy]) VALUES (N'SV012', N'MH001', CAST(N'2026-10-13T14:43:27.020' AS DateTime))\r\n","INSERT [dbo].[DangKyMonHoc] ([MSSV], [MaMonHoc], [NgayDangKy]) VALUES (N'SV012', N'MH002', CAST(N'2026-10-13T14:43:27.020' AS DateTime))\r\n","INSERT [dbo].[DangKyMonHoc] ([MSSV], [MaMonHoc], [NgayDangKy]) VALUES (N'SV013', N'MH004', CAST(N'2026-10-13T14:43:27.020' AS DateTime))\r\n","INSERT [dbo].[DangKyMonHoc] ([MSSV], [MaMonHoc], [NgayDangKy]) VALUES (N'SV014', N'MH005', CAST(N'2026-10-13T14:43:27.020' AS DateTime))\r\n","GO\r\n"],"metadata":{"urn":"Server[@Name='LAPTOP-FDFUAN8L\\SQLEXPRESS']/Database[@Name='QLSV']/Table[@Name='DangKyMonHoc' and @Schema='dbo']","object_type":"Table"}},{"cell_type":"markdown","source":["# [dbo].[HocKy]"],"metadata":{"urn":"Server[@Name='LAPTOP-FDFUAN8L\\SQLEXPRESS']/Database[@Name='QLSV']/Table[@Name='HocKy' and @Schema='dbo']","object_type":"Table"}},{"outputs":[],"execution_count":0,"cell_type":"code","source":["INSERT [dbo].[HocKy] ([MaHocKy], [TenHocKy], [NamHoc]) VALUES (N'HK1', N'Học kỳ 1', N'2026-2027')\r\n","INSERT [dbo].[HocKy] ([MaHocKy], [TenHocKy], [NamHoc]) VALUES (N'HK2', N'Học kỳ 2', N'2026-2027')\r\n","INSERT [dbo].[HocKy] ([MaHocKy], [TenHocKy], [NamHoc]) VALUES (N'HK3', N'Học kỳ hè', N'2026-2027')\r\n","GO\r\n"],"metadata":{"urn":"Server[@Name='LAPTOP-FDFUAN8L\\SQLEXPRESS']/Database[@Name='QLSV']/Table[@Name='HocKy' and @Schema='dbo']","object_type":"Table"}},{"cell_type":"markdown","source":["# [dbo].[Khoa]"],"metadata":{"urn":"Server[@Name='LAPTOP-FDFUAN8L\\SQLEXPRESS']/Database[@Name='QLSV']/Table[@Name='Khoa' and @Schema='dbo']","object_type":"Table"}},{"outputs":[],"execution_count":0,"cell_type":"code","source":["INSERT [dbo].[Khoa] ([MaKhoa], [TenKhoa]) VALUES (N'CK', N'Cơ khí')\r\n","INSERT [dbo].[Khoa] ([MaKhoa], [TenKhoa]) VALUES (N'CNTT', N'Công nghệ thông tin')\r\n","INSERT [dbo].[Khoa] ([MaKhoa], [TenKhoa]) VALUES (N'KT', N'Kế toán')\r\n","INSERT [dbo].[Khoa] ([MaKhoa], [TenKhoa]) VALUES (N'NNA', N'Ngôn ngữ Anh')\r\n","INSERT [dbo].[Khoa] ([MaKhoa], [TenKhoa]) VALUES (N'QTKD', N'Quản trị kinh doanh')\r\n","GO\r\n"],"metadata":{"urn":"Server[@Name='LAPTOP-FDFUAN8L\\SQLEXPRESS']/Database[@Name='QLSV']/Table[@Name='Khoa' and @Schema='dbo']","object_type":"Table"}},{"cell_type":"markdown","source":["# [dbo].[MonHoc]"],"metadata":{"urn":"Server[@Name='LAPTOP-FDFUAN8L\\SQLEXPRESS']/Database[@Name='QLSV']/Table[@Name='MonHoc' and @Schema='dbo']","object_type":"Table"}},{"outputs":[],"execution_count":0,"cell_type":"code","source":["INSERT [dbo].[MonHoc] ([MaMonHoc], [TenMonHoc], [SoTinChi], [MaHocKy]) VALUES (N'MH001', N'Cơ sở dữ liệu', 3, N'HK1')\r\n","INSERT [dbo].[MonHoc] ([MaMonHoc], [TenMonHoc], [SoTinChi], [MaHocKy]) VALUES (N'MH002', N'Lập trình C#', 3, N'HK1')\r\n","INSERT [dbo].[MonHoc] ([MaMonHoc], [TenMonHoc], [SoTinChi], [MaHocKy]) VALUES (N'MH003', N'Cấu trúc dữ liệu và giải thuật', 4, N'HK1')\r\n","INSERT [dbo].[MonHoc] ([MaMonHoc], [TenMonHoc], [SoTinChi], [MaHocKy]) VALUES (N'MH004', N'Phân tích thiết kế hệ thống', 3, N'HK2')\r\n","INSERT [dbo].[MonHoc] ([MaMonHoc], [TenMonHoc], [SoTinChi], [MaHocKy]) VALUES (N'MH005', N'Toán rời rạc', 3, N'HK2')\r\n","INSERT [dbo].[MonHoc] ([MaMonHoc], [TenMonHoc], [SoTinChi], [MaHocKy]) VALUES (N'MH006', N'Tiếng Anh cơ bản', 2, N'HK2')\r\n","INSERT [dbo].[MonHoc] ([MaMonHoc], [TenMonHoc], [SoTinChi], [MaHocKy]) VALUES (N'MH007', N'Tin học đại cương', 3, N'HK3')\r\n","INSERT [dbo].[MonHoc] ([MaMonHoc], [TenMonHoc], [SoTinChi], [MaHocKy]) VALUES (N'MH008', N'Kỹ năng giao tiếp', 2, N'HK3')\r\n","GO\r\n"],"metadata":{"urn":"Server[@Name='LAPTOP-FDFUAN8L\\SQLEXPRESS']/Database[@Name='QLSV']/Table[@Name='MonHoc' and @Schema='dbo']","object_type":"Table"}},{"cell_type":"markdown","source":["# [dbo].[SinhVien]"],"metadata":{"urn":"Server[@Name='LAPTOP-FDFUAN8L\\SQLEXPRESS']/Database[@Name='QLSV']/Table[@Name='SinhVien' and @Schema='dbo']","object_type":"Table"}},{"outputs":[],"execution_count":0,"cell_type":"code","source":["INSERT [dbo].[SinhVien] ([MSSV], [HoTen], [MaKhoa]) VALUES (N'SV001', N'Nguyễn Văn An', N'CNTT')\r\n","INSERT [dbo].[SinhVien] ([MSSV], [HoTen], [MaKhoa]) VALUES (N'SV002', N'Trần Thị Bình', N'QTKD')\r\n","INSERT [dbo].[SinhVien] ([MSSV], [HoTen], [MaKhoa]) VALUES (N'SV003', N'Lê Hoàng Nam', N'CNTT')\r\n","INSERT [dbo].[SinhVien] ([MSSV], [HoTen], [MaKhoa]) VALUES (N'SV004', N'Phạm Ngọc Anh', N'KT')\r\n","INSERT [dbo].[SinhVien] ([MSSV], [HoTen], [MaKhoa]) VALUES (N'SV005', N'Võ Minh Khang', N'CK')\r\n","INSERT [dbo].[SinhVien] ([MSSV], [HoTen], [MaKhoa]) VALUES (N'SV006', N'Nguyễn Thị Lan', N'NNA')\r\n","INSERT [dbo].[SinhVien] ([MSSV], [HoTen], [MaKhoa]) VALUES (N'SV007', N'Trần Quốc Bảo', N'CNTT')\r\n","INSERT [dbo].[SinhVien] ([MSSV], [HoTen], [MaKhoa]) VALUES (N'SV008', N'Lê Thị Mai', N'QTKD')\r\n","INSERT [dbo].[SinhVien] ([MSSV], [HoTen], [MaKhoa]) VALUES (N'SV009', N'Phạm Thành Đạt', N'KT')\r\n","INSERT [dbo].[SinhVien] ([MSSV], [HoTen], [MaKhoa]) VALUES (N'SV010', N'Hoàng Thu Hà', N'NNA')\r\n","INSERT [dbo].[SinhVien] ([MSSV], [HoTen], [MaKhoa]) VALUES (N'SV011', N'Đỗ Minh Tuấn', N'CK')\r\n","INSERT [dbo].[SinhVien] ([MSSV], [HoTen], [MaKhoa]) VALUES (N'SV012', N'Bùi Ngọc Trâm', N'CNTT')\r\n","INSERT [dbo].[SinhVien] ([MSSV], [HoTen], [MaKhoa]) VALUES (N'SV013', N'Nguyễn Đức Huy', N'QTKD')\r\n","INSERT [dbo].[SinhVien] ([MSSV], [HoTen], [MaKhoa]) VALUES (N'SV014', N'Trần Mỹ Linh', N'CK')\r\n","GO\r\n"],"metadata":{"urn":"Server[@Name='LAPTOP-FDFUAN8L\\SQLEXPRESS']/Database[@Name='QLSV']/Table[@Name='SinhVien' and @Schema='dbo']","object_type":"Table"}},{"cell_type":"markdown","source":["# [DF__DangKyMon__NgayD__08B54D69]"],"metadata":{"urn":"Server[@Name='LAPTOP-FDFUAN8L\\SQLEXPRESS']/Database[@Name='QLSV']/Table[@Name='DangKyMonHoc' and @Schema='dbo']/Column[@Name='NgayDangKy']/Default[@Name='DF__DangKyMon__NgayD__08B54D69']","object_type":"Default"}},{"outputs":[],"execution_count":0,"cell_type":"code","source":["ALTER TABLE [dbo].[DangKyMonHoc] ADD  DEFAULT (getdate()) FOR [NgayDangKy]\r\n","GO\r\n"],"metadata":{"urn":"Server[@Name='LAPTOP-FDFUAN8L\\SQLEXPRESS']/Database[@Name='QLSV']/Table[@Name='DangKyMonHoc' and @Schema='dbo']/Column[@Name='NgayDangKy']/Default[@Name='DF__DangKyMon__NgayD__08B54D69']","object_type":"Default"}},{"cell_type":"markdown","source":["# [FK_DangKyMonHoc_MonHoc]"],"metadata":{"urn":"Server[@Name='LAPTOP-FDFUAN8L\\SQLEXPRESS']/Database[@Name='QLSV']/Table[@Name='DangKyMonHoc' and @Schema='dbo']/ForeignKey[@Name='FK_DangKyMonHoc_MonHoc']","object_type":"ForeignKey"}},{"outputs":[],"execution_count":0,"cell_type":"code","source":["ALTER TABLE [dbo].[DangKyMonHoc]  WITH CHECK ADD  CONSTRAINT [FK_DangKyMonHoc_MonHoc] FOREIGN KEY([MaMonHoc])\r\nREFERENCES [dbo].[MonHoc] ([MaMonHoc])\r\n","GO\r\n","ALTER TABLE [dbo].[DangKyMonHoc] CHECK CONSTRAINT [FK_DangKyMonHoc_MonHoc]\r\n","GO\r\n"],"metadata":{"urn":"Server[@Name='LAPTOP-FDFUAN8L\\SQLEXPRESS']/Database[@Name='QLSV']/Table[@Name='DangKyMonHoc' and @Schema='dbo']/ForeignKey[@Name='FK_DangKyMonHoc_MonHoc']","object_type":"ForeignKey"}},{"cell_type":"markdown","source":["# [FK_DangKyMonHoc_SinhVien]"],"metadata":{"urn":"Server[@Name='LAPTOP-FDFUAN8L\\SQLEXPRESS']/Database[@Name='QLSV']/Table[@Name='DangKyMonHoc' and @Schema='dbo']/ForeignKey[@Name='FK_DangKyMonHoc_SinhVien']","object_type":"ForeignKey"}},{"outputs":[],"execution_count":0,"cell_type":"code","source":["ALTER TABLE [dbo].[DangKyMonHoc]  WITH CHECK ADD  CONSTRAINT [FK_DangKyMonHoc_SinhVien] FOREIGN KEY([MSSV])\r\nREFERENCES [dbo].[SinhVien] ([MSSV])\r\n","GO\r\n","ALTER TABLE [dbo].[DangKyMonHoc] CHECK CONSTRAINT [FK_DangKyMonHoc_SinhVien]\r\n","GO\r\n"],"metadata":{"urn":"Server[@Name='LAPTOP-FDFUAN8L\\SQLEXPRESS']/Database[@Name='QLSV']/Table[@Name='DangKyMonHoc' and @Schema='dbo']/ForeignKey[@Name='FK_DangKyMonHoc_SinhVien']","object_type":"ForeignKey"}},{"cell_type":"markdown","source":["# [FK_MonHoc_HocKy]"],"metadata":{"urn":"Server[@Name='LAPTOP-FDFUAN8L\\SQLEXPRESS']/Database[@Name='QLSV']/Table[@Name='MonHoc' and @Schema='dbo']/ForeignKey[@Name='FK_MonHoc_HocKy']","object_type":"ForeignKey"}},{"outputs":[],"execution_count":0,"cell_type":"code","source":["ALTER TABLE [dbo].[MonHoc]  WITH CHECK ADD  CONSTRAINT [FK_MonHoc_HocKy] FOREIGN KEY([MaHocKy])\r\nREFERENCES [dbo].[HocKy] ([MaHocKy])\r\n","GO\r\n","ALTER TABLE [dbo].[MonHoc] CHECK CONSTRAINT [FK_MonHoc_HocKy]\r\n","GO\r\n"],"metadata":{"urn":"Server[@Name='LAPTOP-FDFUAN8L\\SQLEXPRESS']/Database[@Name='QLSV']/Table[@Name='MonHoc' and @Schema='dbo']/ForeignKey[@Name='FK_MonHoc_HocKy']","object_type":"ForeignKey"}},{"cell_type":"markdown","source":["# [FK_SinhVien_Khoa]"],"metadata":{"urn":"Server[@Name='LAPTOP-FDFUAN8L\\SQLEXPRESS']/Database[@Name='QLSV']/Table[@Name='SinhVien' and @Schema='dbo']/ForeignKey[@Name='FK_SinhVien_Khoa']","object_type":"ForeignKey"}},{"outputs":[],"execution_count":0,"cell_type":"code","source":["ALTER TABLE [dbo].[SinhVien]  WITH CHECK ADD  CONSTRAINT [FK_SinhVien_Khoa] FOREIGN KEY([MaKhoa])\r\nREFERENCES [dbo].[Khoa] ([MaKhoa])\r\n","GO\r\n","ALTER TABLE [dbo].[SinhVien] CHECK CONSTRAINT [FK_SinhVien_Khoa]\r\n","GO\r\n"],"metadata":{"urn":"Server[@Name='LAPTOP-FDFUAN8L\\SQLEXPRESS']/Database[@Name='QLSV']/Table[@Name='SinhVien' and @Schema='dbo']/ForeignKey[@Name='FK_SinhVien_Khoa']","object_type":"ForeignKey"}},{"cell_type":"markdown","source":["# [CK_MonHoc_SoTinChi]"],"metadata":{"urn":"Server[@Name='LAPTOP-FDFUAN8L\\SQLEXPRESS']/Database[@Name='QLSV']/Table[@Name='MonHoc' and @Schema='dbo']/Check[@Name='CK_MonHoc_SoTinChi']","object_type":"Check"}},{"outputs":[],"execution_count":0,"cell_type":"code","source":["ALTER TABLE [dbo].[MonHoc]  WITH CHECK ADD  CONSTRAINT [CK_MonHoc_SoTinChi] CHECK  (([SoTinChi]>(0)))\r\n","GO\r\n","ALTER TABLE [dbo].[MonHoc] CHECK CONSTRAINT [CK_MonHoc_SoTinChi]\r\n","GO\r\n"],"metadata":{"urn":"Server[@Name='LAPTOP-FDFUAN8L\\SQLEXPRESS']/Database[@Name='QLSV']/Table[@Name='MonHoc' and @Schema='dbo']/Check[@Name='CK_MonHoc_SoTinChi']","object_type":"Check"}},{"cell_type":"markdown","source":["# [QLSV]"],"metadata":{"urn":"Server[@Name='LAPTOP-FDFUAN8L\\SQLEXPRESS']/Database[@Name='QLSV']","object_type":"Database"}},{"outputs":[],"execution_count":0,"cell_type":"code","source":["USE [master]\r\n","GO\r\n"],"metadata":{"urn":"Server[@Name='LAPTOP-FDFUAN8L\\SQLEXPRESS']/Database[@Name='QLSV']","object_type":"Database"}},{"outputs":[],"execution_count":0,"cell_type":"code","source":["ALTER DATABASE [QLSV] SET  READ_WRITE \r\n","GO\r\n"],"metadata":{"urn":"Server[@Name='LAPTOP-FDFUAN8L\\SQLEXPRESS']/Database[@Name='QLSV']","object_type":"Database"}}]}
+﻿
+/*
+==========================================================
+    DO AN QUAN LY SINH VIEN - QLSV
+    He quan tri co so du lieu: SQL Server
+==========================================================
+    Cac bang:
+    1. Khoa
+    2. SinhVien
+    3. HocKy
+    4. MonHoc
+    5. DangKyMonHoc
+==========================================================
+*/
+
+-- ========================================================
+-- PHAN 1: TAO CO SO DU LIEU
+-- ========================================================
+
+USE master;
+GO
+
+IF DB_ID(N'QLSV') IS NULL
+BEGIN
+    CREATE DATABASE QLSV;
+END;
+GO
+
+USE QLSV;
+GO
+
+-- ========================================================
+-- PHAN 2: TAO CAC BANG
+-- ========================================================
+
+-- 2.1. Bang Khoa
+IF OBJECT_ID(N'dbo.Khoa', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.Khoa
+    (
+        MaKhoa VARCHAR(10) NOT NULL,
+        TenKhoa NVARCHAR(100) NOT NULL,
+
+        CONSTRAINT PK_Khoa
+            PRIMARY KEY (MaKhoa)
+    );
+END;
+GO
+
+-- 2.2. Bang HocKy
+IF OBJECT_ID(N'dbo.HocKy', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.HocKy
+    (
+        MaHocKy VARCHAR(10) NOT NULL,
+        TenHocKy NVARCHAR(50) NOT NULL,
+        NamHoc VARCHAR(9) NOT NULL,
+
+        CONSTRAINT PK_HocKy
+            PRIMARY KEY (MaHocKy)
+    );
+END;
+GO
+
+-- 2.3. Bang SinhVien
+IF OBJECT_ID(N'dbo.SinhVien', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.SinhVien
+    (
+        MSSV VARCHAR(15) NOT NULL,
+        HoTen NVARCHAR(100) NOT NULL,
+        MaKhoa VARCHAR(10) NOT NULL,
+
+        CONSTRAINT PK_SinhVien
+            PRIMARY KEY (MSSV)
+    );
+END;
+GO
+
+-- 2.4. Bang MonHoc
+IF OBJECT_ID(N'dbo.MonHoc', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.MonHoc
+    (
+        MaMonHoc VARCHAR(10) NOT NULL,
+        TenMonHoc NVARCHAR(100) NOT NULL,
+        SoTinChi INT NOT NULL,
+        MaHocKy VARCHAR(10) NULL,
+
+        CONSTRAINT PK_MonHoc
+            PRIMARY KEY (MaMonHoc),
+
+        CONSTRAINT CK_MonHoc_SoTinChi
+            CHECK (SoTinChi > 0)
+    );
+END;
+GO
+
+-- 2.5. Bang DangKyMonHoc
+IF OBJECT_ID(N'dbo.DangKyMonHoc', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.DangKyMonHoc
+    (
+        MSSV VARCHAR(15) NOT NULL,
+        MaMonHoc VARCHAR(10) NOT NULL,
+        NgayDangKy DATETIME NOT NULL
+            CONSTRAINT DF_DangKyMonHoc_NgayDangKy
+            DEFAULT GETDATE(),
+
+        CONSTRAINT PK_DangKyMonHoc
+            PRIMARY KEY (MSSV, MaMonHoc)
+    );
+END;
+GO
+
+-- ========================================================
+-- PHAN 3: KHAI BAO CAC KHOA NGOAI
+-- ========================================================
+
+-- SinhVien thuoc Khoa
+IF NOT EXISTS
+(
+    SELECT 1 FROM sys.foreign_keys
+    WHERE name = N'FK_SinhVien_Khoa'
+)
+BEGIN
+    ALTER TABLE dbo.SinhVien
+    ADD CONSTRAINT FK_SinhVien_Khoa
+        FOREIGN KEY (MaKhoa)
+        REFERENCES dbo.Khoa(MaKhoa);
+END;
+GO
+
+-- MonHoc thuoc HocKy
+IF NOT EXISTS
+(
+    SELECT 1 FROM sys.foreign_keys
+    WHERE name = N'FK_MonHoc_HocKy'
+)
+BEGIN
+    ALTER TABLE dbo.MonHoc
+    ADD CONSTRAINT FK_MonHoc_HocKy
+        FOREIGN KEY (MaHocKy)
+        REFERENCES dbo.HocKy(MaHocKy);
+END;
+GO
+
+-- DangKyMonHoc lien ket SinhVien
+IF NOT EXISTS
+(
+    SELECT 1 FROM sys.foreign_keys
+    WHERE name = N'FK_DangKyMonHoc_SinhVien'
+)
+BEGIN
+    ALTER TABLE dbo.DangKyMonHoc
+    ADD CONSTRAINT FK_DangKyMonHoc_SinhVien
+        FOREIGN KEY (MSSV)
+        REFERENCES dbo.SinhVien(MSSV);
+END;
+GO
+
+-- DangKyMonHoc lien ket MonHoc
+IF NOT EXISTS
+(
+    SELECT 1 FROM sys.foreign_keys
+    WHERE name = N'FK_DangKyMonHoc_MonHoc'
+)
+BEGIN
+    ALTER TABLE dbo.DangKyMonHoc
+    ADD CONSTRAINT FK_DangKyMonHoc_MonHoc
+        FOREIGN KEY (MaMonHoc)
+        REFERENCES dbo.MonHoc(MaMonHoc);
+END;
+GO
+
+-- ========================================================
+-- PHAN 4: THEM DU LIEU MAU
+-- Chi them cac ban ghi chua ton tai
+-- ========================================================
+
+-- 4.1. Du lieu Khoa
+INSERT INTO dbo.Khoa (MaKhoa, TenKhoa)
+SELECT v.MaKhoa, v.TenKhoa
+FROM (VALUES
+    ('CK',   N'Cơ khí'),
+    ('CNTT', N'Công nghệ thông tin'),
+    ('KT',   N'Kế toán'),
+    ('NNA',  N'Ngôn ngữ Anh'),
+    ('QTKD', N'Quản trị kinh doanh')
+) AS v(MaKhoa, TenKhoa)
+WHERE NOT EXISTS
+(
+    SELECT 1 FROM dbo.Khoa k
+    WHERE k.MaKhoa = v.MaKhoa
+);
+GO
+
+-- 4.2. Du lieu HocKy
+INSERT INTO dbo.HocKy (MaHocKy, TenHocKy, NamHoc)
+SELECT v.MaHocKy, v.TenHocKy, v.NamHoc
+FROM (VALUES
+    ('HK1', N'Học kỳ 1',   '2026-2027'),
+    ('HK2', N'Học kỳ 2',   '2026-2027'),
+    ('HK3', N'Học kỳ hè',  '2026-2027')
+) AS v(MaHocKy, TenHocKy, NamHoc)
+WHERE NOT EXISTS
+(
+    SELECT 1 FROM dbo.HocKy h
+    WHERE h.MaHocKy = v.MaHocKy
+);
+GO
+
+-- 4.3. Du lieu SinhVien
+INSERT INTO dbo.SinhVien (MSSV, HoTen, MaKhoa)
+SELECT v.MSSV, v.HoTen, v.MaKhoa
+FROM (VALUES
+    ('SV001', N'Nguyễn Văn An',  'CNTT'),
+    ('SV002', N'Trần Thị Bình',  'QTKD'),
+    ('SV003', N'Lê Hoàng Nam',   'CNTT'),
+    ('SV004', N'Phạm Ngọc Anh',  'KT'),
+    ('SV005', N'Võ Minh Khang',  'CK'),
+    ('SV006', N'Nguyễn Thị Lan', 'NNA'),
+    ('SV007', N'Trần Quốc Bảo',  'CNTT'),
+    ('SV008', N'Lê Thị Mai',     'QTKD'),
+    ('SV009', N'Phạm Thành Đạt', 'KT'),
+    ('SV010', N'Hoàng Thu Hà',   'NNA'),
+    ('SV011', N'Đỗ Minh Tuấn',   'CK'),
+    ('SV012', N'Bùi Ngọc Trâm',  'CNTT'),
+    ('SV013', N'Nguyễn Đức Huy', 'QTKD'),
+    ('SV014', N'Trần Mỹ Linh',   'CK')
+) AS v(MSSV, HoTen, MaKhoa)
+WHERE NOT EXISTS
+(
+    SELECT 1 FROM dbo.SinhVien s
+    WHERE s.MSSV = v.MSSV
+);
+GO
+
+-- 4.4. Du lieu MonHoc
+INSERT INTO dbo.MonHoc
+    (MaMonHoc, TenMonHoc, SoTinChi, MaHocKy)
+SELECT v.MaMonHoc, v.TenMonHoc, v.SoTinChi, v.MaHocKy
+FROM (VALUES
+    ('MH001', N'Cơ sở dữ liệu',                   3, 'HK1'),
+    ('MH002', N'Lập trình C#',                    3, 'HK1'),
+    ('MH003', N'Cấu trúc dữ liệu và giải thuật',  4, 'HK1'),
+    ('MH004', N'Phân tích thiết kế hệ thống',      3, 'HK2'),
+    ('MH005', N'Toán rời rạc',                    3, 'HK2'),
+    ('MH006', N'Tiếng Anh cơ bản',                 2, 'HK2'),
+    ('MH007', N'Tin học đại cương',                3, 'HK3'),
+    ('MH008', N'Kỹ năng giao tiếp',                2, 'HK3')
+) AS v(MaMonHoc, TenMonHoc, SoTinChi, MaHocKy)
+WHERE NOT EXISTS
+(
+    SELECT 1 FROM dbo.MonHoc m
+    WHERE m.MaMonHoc = v.MaMonHoc
+);
+GO
+
+-- 4.5. Du lieu DangKyMonHoc
+-- NgayDangKy tu dong lay thoi gian hien tai
+-- neu khong truyen gia tri vao cot nay.
+
+INSERT INTO dbo.DangKyMonHoc (MSSV, MaMonHoc)
+SELECT v.MSSV, v.MaMonHoc
+FROM (VALUES
+    ('SV001', 'MH001'),
+    ('SV001', 'MH002'),
+    ('SV001', 'MH005'),
+    ('SV001', 'MH006'),
+    ('SV002', 'MH002'),
+    ('SV002', 'MH008'),
+    ('SV003', 'MH001'),
+    ('SV003', 'MH003'),
+    ('SV004', 'MH001'),
+    ('SV004', 'MH007'),
+    ('SV005', 'MH003'),
+    ('SV005', 'MH004'),
+    ('SV006', 'MH006'),
+    ('SV006', 'MH008'),
+    ('SV007', 'MH002'),
+    ('SV007', 'MH005'),
+    ('SV008', 'MH004'),
+    ('SV009', 'MH001'),
+    ('SV009', 'MH007'),
+    ('SV010', 'MH006'),
+    ('SV011', 'MH003'),
+    ('SV012', 'MH001'),
+    ('SV012', 'MH002'),
+    ('SV013', 'MH004'),
+    ('SV014', 'MH005')
+) AS v(MSSV, MaMonHoc)
+WHERE NOT EXISTS
+(
+    SELECT 1
+    FROM dbo.DangKyMonHoc d
+    WHERE d.MSSV = v.MSSV
+      AND d.MaMonHoc = v.MaMonHoc
+);
+GO
+
+-- ========================================================
+-- PHAN 5: KIEM TRA DU LIEU
+-- ========================================================
+
+SELECT * FROM dbo.Khoa;
+SELECT * FROM dbo.SinhVien;
+SELECT * FROM dbo.HocKy;
+SELECT * FROM dbo.MonHoc;
+SELECT * FROM dbo.DangKyMonHoc;
+GO
+
+-- ====================== KET THUC =========================
